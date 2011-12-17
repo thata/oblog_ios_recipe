@@ -11,13 +11,27 @@
 @implementation ViewController
 
 @synthesize text = _text;
+@synthesize button = _button;
 
 - (IBAction)lookup:(id)sender
 {
     UIReferenceLibraryViewController *vc;
     NSString *word = _text.text;
-    vc = [[UIReferenceLibraryViewController alloc] initWithTerm:word];
-    [self presentModalViewController:vc animated:YES];
+
+    // 辞書に指定した単語があるかどうかを確認し...
+    if ([UIReferenceLibraryViewController dictionaryHasDefinitionForTerm:word]) {
+        // あった場合は辞書の検索結果を表示
+        vc = [[UIReferenceLibraryViewController alloc] initWithTerm:word];
+        [self presentModalViewController:vc animated:YES];
+    } else {
+        // 無かった場合は見つからなかったよとアラートビューを表示
+        UIAlertView *alertView;
+        alertView = [[UIAlertView alloc] init];
+        [alertView setMessage:@"指定した単語は辞書に見つかりませんでした。"];
+        [alertView addButtonWithTitle:@"OK"];
+        [alertView setCancelButtonIndex:0];
+        [alertView show];
+    }
 }
 
 - (void)didReceiveMemoryWarning

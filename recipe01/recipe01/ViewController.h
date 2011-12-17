@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController
 
 @property (nonatomic, strong) IBOutlet UITextField *text;
+@property (nonatomic, strong) IBOutlet UIButton *button;
 
 - (IBAction)lookup:(id)sender;
 
