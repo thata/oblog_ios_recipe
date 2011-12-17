@@ -10,6 +10,16 @@
 
 @implementation ViewController
 
+@synthesize text = _text;
+
+- (IBAction)lookup:(id)sender
+{
+    UIReferenceLibraryViewController *vc;
+    NSString *word = _text.text;
+    vc = [[UIReferenceLibraryViewController alloc] initWithTerm:word];
+    [self presentModalViewController:vc animated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -10,4 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, strong) IBOutlet UITextField *text;
+
+- (IBAction)lookup:(id)sender;
+
 @end
